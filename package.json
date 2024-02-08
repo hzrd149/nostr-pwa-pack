@@ -1,0 +1,27 @@
+{
+  "name": "nostr-pwa-pack",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier -w ."
+  },
+  "files": [
+    "index.js"
+  ],
+  "bin": "./index.js",
+  "dependencies": {
+    "@nostr-dev-kit/ndk": "^2.4.0",
+    "nostr-tools": "^1",
+    "satellite-cdn-client": "0.1.2",
+    "shelljs": "^0.8.5",
+    "websocket-polyfill": "^0.0.3",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/shelljs": "^0.8.15",
+    "@types/yargs": "^17.0.32",
+    "prettier": "^3.2.5"
+  }
+}
