@@ -84,16 +84,12 @@ yargs(hideBin(process.argv))
       let version = "";
 
       if (argv.package) {
-        if (argv.verbose) console.log(`Reading package.json ${argv.package}`);
-        const pkg = JSON.parse(
-          await fs.readFile(
-            path.isAbsolute(
-              argv.package
-                ? argv.package
-                : path.join(process.cwd(), argv.package),
-            ),
-          ),
-        );
+        const packagePath = path.isAbsolute(argv.package)
+          ? argv.package
+          : path.relative(process.cwd(), argv.package);
+
+        if (argv.verbose) console.log(`Reading package.json ${packagePath}`);
+        const pkg = JSON.parse(await fs.readFile(packagePath));
         name = pkg.name;
         version = pkg.version;
       } else if (argv.appName && argv.appVersion) {
