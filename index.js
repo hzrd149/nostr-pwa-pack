@@ -137,6 +137,10 @@ yargs(hideBin(process.argv))
           description: "The secret key to use for nostr-connect",
           type: "string",
         })
+        .option("thumb", {
+          description: "A URL to a thumbnail image",
+          type: "string",
+        })
         .option("relays", {
           alias: "r",
           description: "A comma separated list of relays to publish to",
@@ -202,7 +206,7 @@ yargs(hideBin(process.argv))
 
       const event = new NDKEvent(ndk);
       event.kind = NDKKind.Media;
-      event.content = "";
+      event.content = `${filename}`;
 
       event.tags.push(["name", res.name]);
       event.tags.push(["size", String(res.size)]);
@@ -211,6 +215,7 @@ yargs(hideBin(process.argv))
       event.tags.push(["url", res.url]);
       event.tags.push(["magnet", res.magnet]);
       event.tags.push(["i", res.infohash]);
+      if (argv.thumb) event.tags.push(["thumb", argv.thumb]);
       event.tags.push(["alt", "Packaged PWA"]);
 
       if (argv.verbose) console.log("Created event", event.rawEvent());
