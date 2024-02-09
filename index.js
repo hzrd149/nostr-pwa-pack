@@ -155,9 +155,9 @@ yargs(hideBin(process.argv))
       const filename = path.basename(argv.pwa);
       file.name = filename;
 
-      const mimeType = "application/x-pwa+zip";
+      const mimeType = "application/pwa+zip";
 
-      const relays = argv.relays.split(",");
+      const relays = argv.relays?.split(",") ?? [];
 
       const ndk = new NDK({
         explicitRelayUrls: relays,
