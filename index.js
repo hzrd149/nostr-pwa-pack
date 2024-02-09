@@ -108,9 +108,11 @@ yargs(hideBin(process.argv))
       } catch (e) {}
 
       // zip folder
-      let flags = "rjX";
+      let flags = "rX";
       if (!argv.verbose) flags += "q";
-      shell.exec(`zip -${flags} ${output} ${argv.dir}`);
+      shell.cd(argv.dir);
+      shell.exec(`zip -${flags} ../${output} *`);
+      shell.cd("../");
 
       console.log("Created", output);
     },
