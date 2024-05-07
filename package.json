@@ -1,27 +1,33 @@
 {
   "name": "nostr-pwa-pack",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "format": "prettier -w ."
+    "build": "tsc",
+    "format": "prettier -w .",
+    "prepack": "tsc"
   },
   "files": [
-    "index.js"
+    "dist"
   ],
-  "bin": "./index.js",
+  "bin": "./dist/index.js",
   "dependencies": {
-    "@nostr-dev-kit/ndk": "^2.4.0",
-    "nostr-tools": "^1",
-    "satellite-cdn-client": "0.1.2",
+    "@changesets/cli": "^2.27.1",
+    "@nostr-dev-kit/ndk": "^2.8.1",
+    "blossom-client-sdk": "^0.5.1",
+    "blossom-drive-sdk": "^0.3.0",
+    "nostr-tools": "^1.17.0",
     "shelljs": "^0.8.5",
-    "websocket-polyfill": "^0.0.3",
+    "ws": "^8.17.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@types/shelljs": "^0.8.15",
+    "@types/ws": "^8.5.10",
     "@types/yargs": "^17.0.32",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
   }
 }
